@@ -1,4 +1,4 @@
-// screens/location_picker/widgets/location_tile.dart
+
 import 'package:flutter/material.dart';
 import '../../../model/ride/locations.dart';
 import '../../../theme/theme.dart';
