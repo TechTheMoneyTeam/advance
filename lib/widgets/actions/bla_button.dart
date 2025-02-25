@@ -81,12 +81,12 @@ class BlaButton extends StatelessWidget {
 
   Color _getTextColor() {
     if (!isEnabled) {
-      return BlaColors.greyLight; // Assuming you have a disabled text color
+      return BlaColors.greyLight; 
     }
 
     switch (variant) {
       case BlaButtonVariant.primary:
-        return BlaColors.white; // Assuming you want white text on primary
+        return BlaColors.white; 
       case BlaButtonVariant.secondary:
         return BlaColors.primary;
     }
@@ -94,7 +94,7 @@ class BlaButton extends StatelessWidget {
 
   Color _getBorderColor() {
     if (!isEnabled) {
-      return BlaColors.greyLight; // Assuming you have a disabled border color
+      return BlaColors.greyLight; 
     }
 
     switch (variant) {
@@ -117,7 +117,7 @@ class BlaButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, color: textColor, size: 20),
-          SizedBox(width: BlaSpacings.s), // Use the defined spacing
+          SizedBox(width: BlaSpacings.s), 
           Text(
             text,
             style: BlaTextStyles.button.copyWith(color: textColor),
