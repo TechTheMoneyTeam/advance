@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 ///
 class BlaColors {
   static Color primary            = const Color(0xFF00aff5);
+   static const Color secondary = Colors.grey;
 
   static Color backgroundAccent   = const Color(0xFFEDEDED);
  
@@ -12,10 +13,16 @@ class BlaColors {
   static Color neutral            = const Color(0xFF3d5c62);
   static Color neutralLight       = const Color(0xFF708c91);
   static Color neutralLighter     = const Color(0xFF92A7AB);
+    static const Color borderNormal = Color(0xFFBDBDBD); 
+    static const Color borderLight = Color.fromARGB(255, 70, 70, 70); 
+  static const Color secondaryText = Color(0xFF7A7A7A); 
 
   static Color greyLight          = const Color(0xFFE2E2E2);
   
   static Color white              = Colors.white;
+
+  static Color error              = Colors.red;
+  static Color disabledText              = const Color.fromARGB(255, 120, 120, 120);
 
   static Color get backGroundColor { 
     return BlaColors.primary;
@@ -53,6 +60,9 @@ class BlaTextStyles {
   static TextStyle label =  const TextStyle(fontSize: 13, fontWeight: FontWeight.w400);
 
   static TextStyle button =  const TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
+
+  static TextStyle bodyMedium = const TextStyle(fontSize: 16, fontWeight: FontWeight.w400); 
+
 }
 
 
