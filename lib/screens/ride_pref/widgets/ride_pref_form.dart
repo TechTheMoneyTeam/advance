@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:week_3_blabla_project/screens/location_picker/location_picker_screen.dart';
+import 'package:week_3_blabla_project/utils/animations_util.dart';
 import '../../../model/ride/locations.dart';
 import '../../../model/ride_pref/ride_pref.dart';
 
@@ -84,7 +86,7 @@ class _RidePrefFormState extends State<RidePrefForm> {
         ElevatedButton(
           onPressed: () async {
             // Logic to pick location
-            Location? selectedLocation = await _showLocationPicker();
+            Location? selectedLocation = await _showLocationPicker(isArrival: false);
             onChanged(selectedLocation);
           },
           child: Text(currentLocation?.name ?? 'Select $label'),
@@ -93,10 +95,25 @@ class _RidePrefFormState extends State<RidePrefForm> {
     );
   }
 
-  Future<Location?> _showLocationPicker() async {
-    // Implement your location picker logic
-    // For now, return null for simplicity
-    return null;
+  Future<Location?> _showLocationPicker({required bool isArrival}) async {
+      final selectedLocation = await Navigator.of(context).push<Location>(
+    AnimationsUtils.createBottomToTopRoute(
+      LocationPickerScreen(
+        title: isArrival ? 'Select destination' : 'Select departure',
+        excludeLocation: isArrival ? departure : arrival,
+      ),
+    ),
+  );
+  
+  if (selectedLocation != null) {
+    setState(() {
+      if (isArrival) {
+        arrival = selectedLocation;
+      } else {
+        departure = selectedLocation;
+      }
+    });
+  }
   }
 
   // ----------------------------------
