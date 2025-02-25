@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../theme/theme.dart';
 
@@ -79,12 +78,20 @@ class BlaTextField extends StatelessWidget {
                   SizedBox(width: BlaSpacings.s),
                 ],
                 Expanded(
-                  child: Text(
-                    hasValue ? value! : placeholder,
-                    style: BlaTextStyles.body.copyWith(
-                      color: isEnabled
-                          ? (hasValue ? BlaColors.textNormal : BlaColors.secondary)
-                          : BlaColors.disabled,
+                  child: TextField(
+                    enabled: isEnabled,
+                    controller: TextEditingController(text: hasValue ? value : null),
+                    onChanged: isEnabled ? onChanged : null,
+                    decoration: InputDecoration(
+                      hintText: placeholder,
+                      border: InputBorder.none,
+                      hintStyle: TextStyle(
+                        color: BlaColors.secondary,
+                      ),
+                      isDense: true,
+                    ),
+                    style: TextStyle(
+                      color: isEnabled ? BlaColors.textNormal : BlaColors.disabled,
                     ),
                   ),
                 ),
