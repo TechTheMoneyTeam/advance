@@ -28,17 +28,16 @@ class BlaButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Determine button colors based on variant and enabled state
+
     final backgroundColor = _getBackgroundColor();
     final textColor = _getTextColor();
     final borderColor = _getBorderColor();
 
-    // Create the button content with or without icon
     Widget buttonContent = isLoading
         ? _buildLoadingContent(textColor)
         : _buildButtonContent(textColor);
 
-    // Create the button with appropriate styling
+  
     return Container(
       width: isExpanded ? double.infinity : null,
       height: 48,
@@ -68,7 +67,7 @@ class BlaButton extends StatelessWidget {
 
   Color _getBackgroundColor() {
     if (!isEnabled) {
-      return BlaColors.greyLight; // Assuming you have a disabled background color
+      return BlaColors.greyLight;
     }
 
     switch (variant) {

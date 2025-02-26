@@ -11,6 +11,7 @@ class BlaColors {
  
   static Color neutralDark        = const Color(0xFF054752);
   static Color neutral            = const Color(0xFF3d5c62);
+  static Color blue            = const Color.fromARGB(255, 0, 213, 255);
   static Color neutralLight       = const Color(0xFF708c91);
   static Color neutralLighter     = const Color(0xFF92A7AB);
     static const Color borderNormal = Color(0xFFBDBDBD); 

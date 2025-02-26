@@ -12,7 +12,7 @@ class BlaButtonTestScreen extends StatelessWidget {
         title: const Text('BlaButton Tests'),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(BlaSpacings.m), // Use defined spacing
+        padding: EdgeInsets.all(BlaSpacings.m), 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,9 +23,11 @@ class BlaButtonTestScreen extends StatelessWidget {
               icon: Icons.chat,
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Contact Volodia pressed!')),
+                  const SnackBar(content: Text('Button 1')),
                 );
+              
               },
+              variant: BlaButtonVariant.secondary, 
               
             ),
             const SizedBox(height: 16),
@@ -34,10 +36,10 @@ class BlaButtonTestScreen extends StatelessWidget {
               icon: Icons.calendar_today,
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Request to book pressed!')),
+                  const SnackBar(content: Text('Button ')),
                 );
               },
-              variant: BlaButtonVariant.primary, // Solid variant for the request button
+              variant: BlaButtonVariant.primary, 
             ),
           ],
         ),
