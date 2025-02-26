@@ -36,7 +36,7 @@ class BlaButtonTestScreen extends StatelessWidget {
               icon: Icons.calendar_today,
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Button ')),
+                  const SnackBar(content: Text('Button 2')),
                 );
               },
               variant: BlaButtonVariant.primary, 
