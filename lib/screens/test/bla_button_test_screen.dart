@@ -22,9 +22,7 @@ class BlaButtonTestScreen extends StatelessWidget {
               text: 'Contact Volodia',
               icon: Icons.chat,
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Button 1')),
-                );
+        
               
               },
               variant: BlaButtonVariant.secondary, 
@@ -35,9 +33,7 @@ class BlaButtonTestScreen extends StatelessWidget {
               text: 'Request to book',
               icon: Icons.calendar_today,
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Button 2')),
-                );
+          
               },
               variant: BlaButtonVariant.primary, 
             ),
