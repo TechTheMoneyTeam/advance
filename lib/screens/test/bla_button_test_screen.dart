@@ -9,17 +9,17 @@ class BlaButtonTestScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BlaButton Tests'),
+        title: const Text('Tests'),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(BlaSpacings.m), 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildSectionTitle('Contact Buttons'),
+           
             const SizedBox(height: 16),
             BlaButton(
-              text: 'Contact Volodia',
+              text: 'Button 1',
               icon: Icons.chat,
               onPressed: () {
         
@@ -30,7 +30,7 @@ class BlaButtonTestScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             BlaButton(
-              text: 'Request to book',
+              text: 'Button 2',
               icon: Icons.calendar_today,
               onPressed: () {
           
@@ -43,10 +43,5 @@ class BlaButtonTestScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSectionTitle(String title) {
-    return Text(
-      title,
-      style: BlaTextStyles.heading, // Ensure this matches your defined text style
-    );
-  }
+
 }
