@@ -1,138 +1,72 @@
 import 'package:flutter/material.dart';
+
 import '../../theme/theme.dart';
 
-enum BlaButtonVariant {
-  primary,
-  secondary,
-}
+enum ButtonType { primary, secondary }
 
+///
+/// Button rendering for the whole application
+///
 class BlaButton extends StatelessWidget {
   final String text;
-  final BlaButtonVariant variant;
-  final IconData? icon;
   final VoidCallback? onPressed;
-  final bool isEnabled;
-  final bool isExpanded;
-  final bool isLoading;
+  final ButtonType type;
+  final IconData? icon;
 
-  const BlaButton({
-    Key? key,
-    required this.text,
-    this.variant = BlaButtonVariant.primary,
-    this.icon,
-    this.onPressed,
-    this.isEnabled = true,
-    this.isExpanded = true,
-    this.isLoading = false,
-  }) : super(key: key);
+  const BlaButton(
+      {super.key,
+      required this.text,
+      required this.onPressed,
+      this.type = ButtonType.primary,
+      this.icon});
 
   @override
   Widget build(BuildContext context) {
 
-    final backgroundColor = _getBackgroundColor();
-    final textColor = _getTextColor();
-    final borderColor = _getBorderColor();
+    // Compute the rendering
+    Color backgroundColor =
+        type == ButtonType.primary ? BlaColors.primary : BlaColors.white;
 
-    Widget buttonContent = isLoading
-        ? _buildLoadingContent(textColor)
-        : _buildButtonContent(textColor);
+    BorderSide border = type == ButtonType.primary
+        ? BorderSide.none
+        : BorderSide(color: BlaColors.greyLight, width: 2);
 
-  
-    return Container(
-      width: isExpanded ? double.infinity : null,
-      height: 48,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: borderColor,
-          width: variant == BlaButtonVariant.secondary ? 2 : 0,
-        ),
-      ),
-      child: Material(
-        color: backgroundColor,
-        borderRadius: BorderRadius.circular(8),
-        child: InkWell(
-          borderRadius: BorderRadius.circular(8),
-          onTap: (isEnabled && !isLoading) ? onPressed : null,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: buttonContent,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+    Color textColor =
+        type == ButtonType.primary ? BlaColors.white : BlaColors.primary;
+        
+    Color iconColor =
+        type == ButtonType.primary ? BlaColors.white : BlaColors.primary;
 
-  Color _getBackgroundColor() {
-    if (!isEnabled) {
-      return BlaColors.greyLight;
+
+  	// Create the button icon - if any
+    List<Widget> children = [];
+    if (icon != null) {
+      children.add(Icon(icon, size: 20, color: iconColor,));
+      children.add(SizedBox(width: BlaSpacings.s));
     }
 
-    switch (variant) {
-      case BlaButtonVariant.primary:
-        return BlaColors.primary;
-      case BlaButtonVariant.secondary:
-        return Colors.transparent;
-    }
-  }
+    // Create the button text
+    Text buttonText =
+        Text(text, style: BlaTextStyles.button.copyWith(color: textColor));
 
-  Color _getTextColor() {
-    if (!isEnabled) {
-      return BlaColors.greyLight; 
-    }
+    children.add(buttonText);
 
-    switch (variant) {
-      case BlaButtonVariant.primary:
-        return BlaColors.white; 
-      case BlaButtonVariant.secondary:
-        return BlaColors.primary;
-    }
-  }
-
-  Color _getBorderColor() {
-    if (!isEnabled) {
-      return BlaColors.greyLight; 
-    }
-
-    switch (variant) {
-      case BlaButtonVariant.primary:
-        return Colors.transparent;
-      case BlaButtonVariant.secondary:
-        return BlaColors.primary;
-    }
-  }
-
-  Widget _buildButtonContent(Color textColor) {
-    if (icon == null) {
-      return Text(
-        text,
-        style: BlaTextStyles.button.copyWith(color: textColor),
-      );
-    } else {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: textColor, size: 20),
-          SizedBox(width: BlaSpacings.s), 
-          Text(
-            text,
-            style: BlaTextStyles.button.copyWith(color: textColor),
-          ),
-        ],
-      );
-    }
-  }
-
-  Widget _buildLoadingContent(Color textColor) {
+    // Render the button
     return SizedBox(
-      height: 20,
-      width: 20,
-      child: CircularProgressIndicator(
-        strokeWidth: 2,
-        valueColor: AlwaysStoppedAnimation<Color>(textColor),
+      child: OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          backgroundColor: backgroundColor,
+          padding: EdgeInsets.symmetric(vertical: 20),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(BlaSpacings.radius),
+          ),
+          side: border,
+        ),
+        onPressed: onPressed,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: children,
+        ),
       ),
     );
   }

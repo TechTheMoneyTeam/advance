@@ -59,13 +59,13 @@ const List<Location> fakeLocations = [
 List<RidePref> fakeRidePrefs = [
   RidePref(
     departure: fakeLocations[0], // London
-    departureDate: DateTime.now().add(const Duration(days: 1)), // Tomorrow
+    departureDate: DateTime.now().add(Duration(days: 1)), // Tomorrow
     arrival: fakeLocations[3], // Paris
     requestedSeats: 2,
   ),
   RidePref(
     departure: fakeLocations[1], // Manchester
-    departureDate: DateTime.now().add(const Duration(days: 7)), // Next week
+    departureDate: DateTime.now().add(Duration(days: 7)), // Next week
     arrival: fakeLocations[4], // Lyon
     requestedSeats: 3,
   ),
@@ -77,13 +77,13 @@ List<RidePref> fakeRidePrefs = [
   ),
   RidePref(
     departure: fakeLocations[0], // London
-    departureDate: DateTime.now().add(const Duration(days: 1)), // Tomorrow
+    departureDate: DateTime.now().add(Duration(days: 1)), // Tomorrow
     arrival: fakeLocations[3], // Paris
     requestedSeats: 2,
   ),
   RidePref(
     departure: fakeLocations[4], // Manchester
-    departureDate: DateTime.now().add(const Duration(days: 7)), // Next week
+    departureDate: DateTime.now().add(Duration(days: 7)), // Next week
     arrival: fakeLocations[0], // Lyon
     requestedSeats: 3,
   ),

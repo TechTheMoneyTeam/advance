@@ -1,4 +1,4 @@
-import '/model/ride_pref/ride_pref.dart';
+import 'package:week_3_blabla_project/model/ride_pref/ride_pref.dart';
 
 import '../dummy_data/dummy_data.dart';
 import '../model/ride/ride.dart';
@@ -20,10 +20,6 @@ class RidesService {
     
     // For now, just a test
     return availableRides.where( (ride) => ride.departureLocation == preferences.departure && ride.arrivalLocation == preferences.arrival).toList();
-  }
-
-  static List<Ride> getRidesByPreference(RidePref preference) {
-    return availableRides;
   }
  
 }

@@ -12,9 +12,9 @@ class DateTimeUtils {
 
     if (targetDate == today) {
       return 'Today';
-    } else if (targetDate == today.subtract(const Duration(days: 1))) {
+    } else if (targetDate == today.subtract(Duration(days: 1))) {
       return 'Yesterday';
-    } else if (targetDate == today.add(const Duration(days: 1))) {
+    } else if (targetDate == today.add(Duration(days: 1))) {
       return 'Tomorrow';
     } else {
       return DateFormat('E d MMM').format(dateTime); // Example: Wed 12 Feb
