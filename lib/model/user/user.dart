@@ -12,8 +12,8 @@ class User {
 
   User(
       {required this.firstName,
-      required this.lastName,
-      required this.email,
+     required this.lastName,
+     required this.email,
       required this.phone,
       required this.profilePicture,
       required this.verifiedProfile});

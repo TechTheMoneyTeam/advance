@@ -9,6 +9,7 @@ import '../../repository/ride_repository.dart';
 class RideWithPreferences extends Ride {
   final bool acceptPets;
 
+
   RideWithPreferences({
     required Location departureLocation,
     required Location arrivalLocation,
@@ -18,27 +19,25 @@ class RideWithPreferences extends Ride {
     required int availableSeats,
     required double pricePerSeat,
     required this.acceptPets,
+
   }) : super(
-          departureLocation: departureLocation,
-          arrivalLocation: arrivalLocation,
-          departureDate: departureDate,
-          arrivalDateTime: arrivalDateTime,
-          driver: driver,
-          availableSeats: availableSeats,
-          pricePerSeat: pricePerSeat,
-        );
+    departureLocation: departureLocation,
+    arrivalLocation: arrivalLocation,
+    departureDate: departureDate,
+    arrivalDateTime: arrivalDateTime,
+    driver: driver,
+    availableSeats: availableSeats,
+    pricePerSeat: pricePerSeat,
+  );
 }
 
 class MockRidesRepository implements RidesRepository {
   final List<Ride> _rides = [
     RideWithPreferences(
-      departureLocation:
-          Location(name: 'Battambang', country: Country.cambodia),
+      departureLocation: Location(name: 'Battambang', country: Country.cambodia),
       arrivalLocation: Location(name: 'Siem Reap', country: Country.cambodia),
       departureDate: DateTime.now().copyWith(hour: 5, minute: 30),
-      arrivalDateTime: DateTime.now()
-          .copyWith(hour: 5, minute: 30)
-          .add(const Duration(hours: 2)),
+      arrivalDateTime: DateTime.now().copyWith(hour: 5, minute: 30).add(const Duration(hours: 2)),
       driver: User(
         firstName: 'Kannika',
         lastName: '',
@@ -50,15 +49,13 @@ class MockRidesRepository implements RidesRepository {
       availableSeats: 2,
       pricePerSeat: 10.0,
       acceptPets: false,
+
     ),
     RideWithPreferences(
-      departureLocation:
-          Location(name: 'Battambang', country: Country.cambodia),
+      departureLocation: Location(name: 'Battambang', country: Country.cambodia),
       arrivalLocation: Location(name: 'Siem Reap', country: Country.cambodia),
       departureDate: DateTime.now().copyWith(hour: 20, minute: 0),
-      arrivalDateTime: DateTime.now()
-          .copyWith(hour: 20, minute: 0)
-          .add(const Duration(hours: 2)),
+      arrivalDateTime: DateTime.now().copyWith(hour: 20, minute: 0).add(const Duration(hours: 2)),
       driver: User(
         firstName: 'Chaylim',
         lastName: '',
@@ -70,15 +67,13 @@ class MockRidesRepository implements RidesRepository {
       availableSeats: 0,
       pricePerSeat: 10.0,
       acceptPets: false,
+
     ),
     RideWithPreferences(
-      departureLocation:
-          Location(name: 'Battambang', country: Country.cambodia),
+      departureLocation: Location(name: 'Battambang', country: Country.cambodia),
       arrivalLocation: Location(name: 'Siem Reap', country: Country.cambodia),
       departureDate: DateTime.now().copyWith(hour: 5, minute: 0),
-      arrivalDateTime: DateTime.now()
-          .copyWith(hour: 5, minute: 0)
-          .add(const Duration(hours: 3)),
+      arrivalDateTime: DateTime.now().copyWith(hour: 5, minute: 0).add(const Duration(hours: 3)),
       driver: User(
         firstName: 'Mengtech',
         lastName: '',
@@ -90,15 +85,13 @@ class MockRidesRepository implements RidesRepository {
       availableSeats: 1,
       pricePerSeat: 15.0,
       acceptPets: false,
+
     ),
     RideWithPreferences(
-      departureLocation:
-          Location(name: 'Battambang', country: Country.cambodia),
+      departureLocation: Location(name: 'Battambang', country: Country.cambodia),
       arrivalLocation: Location(name: 'Siem Reap', country: Country.cambodia),
       departureDate: DateTime.now().copyWith(hour: 20, minute: 0),
-      arrivalDateTime: DateTime.now()
-          .copyWith(hour: 20, minute: 0)
-          .add(const Duration(hours: 2)),
+      arrivalDateTime: DateTime.now().copyWith(hour: 20, minute: 0).add(const Duration(hours: 2)),
       driver: User(
         firstName: 'Limhao',
         lastName: '',
@@ -110,15 +103,13 @@ class MockRidesRepository implements RidesRepository {
       availableSeats: 2,
       pricePerSeat: 12.0,
       acceptPets: true,
+ 
     ),
     RideWithPreferences(
-      departureLocation:
-          Location(name: 'Battambang', country: Country.cambodia),
+      departureLocation: Location(name: 'Battambang', country: Country.cambodia),
       arrivalLocation: Location(name: 'Siem Reap', country: Country.cambodia),
       departureDate: DateTime.now().copyWith(hour: 5, minute: 0),
-      arrivalDateTime: DateTime.now()
-          .copyWith(hour: 5, minute: 0)
-          .add(const Duration(hours: 3)),
+      arrivalDateTime: DateTime.now().copyWith(hour: 5, minute: 0).add(const Duration(hours: 3)),
       driver: User(
         firstName: 'Sovanda',
         lastName: '',
@@ -130,22 +121,30 @@ class MockRidesRepository implements RidesRepository {
       availableSeats: 1,
       pricePerSeat: 15.0,
       acceptPets: false,
+
     ),
   ];
 
   @override
-  List<Ride> getRides(RidePref preference) {
+  List<Ride> getRides(RidePref preference, RidesFilter? filter) {
     return _rides.where((ride) {
+      // Match departure and arrival
       if (ride.departureLocation.name != preference.departure.name ||
           ride.arrivalLocation.name != preference.arrival.name) {
         return false;
       }
-
+      
+      // Check available seats
       if (ride.availableSeats < preference.requestedSeats) {
         return false;
       }
-
-
+      
+ 
+      if (filter != null && filter.petAccepted && 
+          !(ride is RideWithPreferences && (ride).acceptPets)) {
+        return false;
+      }
+      
       return true;
     }).toList();
   }

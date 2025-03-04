@@ -17,6 +17,18 @@ class BlaColors {
   
   static Color white              = Colors.white;
 
+  static Color disabledText       = const Color(0xFFAAAAAA);
+  
+  // Added missing borderLight getter
+  static Color get borderLight {
+    return BlaColors.greyLight;
+  }
+
+  // Added missing secondaryText getter
+  static Color get secondaryText {
+    return BlaColors.neutralLight;
+  }
+
   static Color get backGroundColor { 
     return BlaColors.primary;
   }
@@ -52,12 +64,15 @@ class BlaTextStyles {
 
   static TextStyle body =  TextStyle(fontSize: 16, fontWeight: FontWeight.w400);
 
+  // Added missing bodyMedium getter
+  static TextStyle get bodyMedium {
+    return TextStyle(fontSize: 14, fontWeight: FontWeight.w400);
+  }
+
   static TextStyle label =  TextStyle(fontSize: 13, fontWeight: FontWeight.w400);
 
   static TextStyle button =  TextStyle(fontSize: 14, fontWeight: FontWeight.w500);
 }
-
-
 
 ///
 /// Definition of App spacings, in pixels.
@@ -74,7 +89,6 @@ class BlaSpacings {
   static const double radiusLarge = 24; 
 }
 
-
 class BlaSize {
   static const double icon = 24;
 }
@@ -86,4 +100,3 @@ ThemeData appTheme =  ThemeData(
   fontFamily: 'Eesti',
   scaffoldBackgroundColor: Colors.white,
 );
- 
