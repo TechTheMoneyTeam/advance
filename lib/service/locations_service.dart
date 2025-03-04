@@ -1,13 +1,25 @@
 import 'package:week_3_blabla_project/model/ride/locations.dart';
+import '../repository/location_repo.dart';
 
-import '../dummy_data/dummy_data.dart';
-
-////
-///   This service handles:
-///   - The list of available rides
-///
 class LocationsService {
+  static final LocationsService _instance = LocationsService._internal();
+  LocationsRepository? _repository;
 
-  static const List<Location> availableLocations = fakeLocations;   // TODO for now fake data
- 
+  List<Location>? _availableLocations;
+
+  LocationsService._internal();
+
+  factory LocationsService() {
+    return _instance;
+  }
+
+  void initialize(LocationsRepository repository) {
+    _repository = repository;
+    _availableLocations = null;
+  }
+
+  List<Location> getLocations() {
+    _availableLocations ??= _repository!.getLocations();
+    return _availableLocations!;
+  }
 }
