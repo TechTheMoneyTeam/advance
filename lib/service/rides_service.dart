@@ -38,7 +38,7 @@ class RidesService {
       throw Exception('RidesService not initialized with repository');
     }
     
-    List<Ride> rides = _repository!.getRides(preference, filter);
+    List<Ride> rides = _repository!.getRides(preference);
     
     // Apply sorting if requested (bonus)
     if (sortType != null) {
