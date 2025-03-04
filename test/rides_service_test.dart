@@ -30,7 +30,7 @@ void main() {
       expect(rides.length, equals(4));
 
       print(
-          'For your preferensce (Battambang -> Siem Reap, today 1 passenger) we found ${rides.length} rides:');
+          'For your preferense (Battambang -> Siem Reap, today 1 passenger) we found ${rides.length} rides:');
       for (final ride in rides) {
         final hour = ride.departureDate.hour;
         final minute = ride.departureDate.minute;
