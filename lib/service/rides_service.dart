@@ -4,7 +4,6 @@ import 'package:week_3_blabla_project/repository/ride_repository.dart';
 import '../dummy_data/dummy_data.dart';
 import '../model/ride/ride.dart';
 
-// Ride sort types for bonus
 enum RideSortType {
   departureTime,
   price,
@@ -20,15 +19,15 @@ class RidesService {
   static final RidesService _instance = RidesService._internal();
   RidesRepository? _repository;
   
-  // Private constructor
+
   RidesService._internal();
   
-  // Singleton accessor
+
   factory RidesService() {
     return _instance;
   }
   
-  // Initialize with repository
+
   void initialize(RidesRepository repository) {
     _repository = repository;
   }
@@ -40,7 +39,7 @@ class RidesService {
     
     List<Ride> rides = _repository!.getRides(preference, filter);
     
-    // Apply sorting if requested (bonus)
+  
     if (sortType != null) {
       switch (sortType) {
         case RideSortType.departureTime:

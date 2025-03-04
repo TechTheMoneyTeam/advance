@@ -4,4 +4,5 @@ import '../service/rides_service.dart';
 
 abstract class RidesRepository {
   List<Ride> getRides(RidePref preference, RidesFilter? filter);
+  
 }

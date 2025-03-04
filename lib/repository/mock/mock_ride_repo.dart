@@ -136,6 +136,7 @@ class MockRidesRepository implements RidesRepository {
       
       // Check available seats
       if (ride.availableSeats < preference.requestedSeats) {
+        
         return false;
       }
       
