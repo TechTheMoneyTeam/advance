@@ -15,6 +15,7 @@ class LocationsService {
 
   void initialize(LocationsRepository repository) {
     _repository = repository;
+    
     _availableLocations = null;
   }
 

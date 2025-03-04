@@ -4,6 +4,7 @@ import '../location_repo.dart';
 
 
 class MockLocationsRepository implements LocationsRepository {
+  
   @override
   List<Location> getLocations() {
     return [
