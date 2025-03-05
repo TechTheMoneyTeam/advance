@@ -7,10 +7,6 @@ import '../../service/rides_service.dart';
 import '../../theme/theme.dart';
 import 'widgets/rides_tile.dart';
 
-///
-///  The Ride Selection screen allow user to select a ride, once ride preferences have been defined.
-///  The screen also allow user to re-define the ride preferences and to activate some filters.
-///
 class RidesScreen extends StatefulWidget {
   final RidePref initialRidePref;
 
@@ -36,8 +32,6 @@ class _RidesScreenState extends State<RidesScreen> {
   }
 
   void onRidePrefPressed() {
-    // 1- open a modal to edit the ride preferences
-    // For now just print a message
     print("Ride preferences editing will be implemented here");
   }
 
@@ -99,7 +93,6 @@ class _RidesScreenState extends State<RidesScreen> {
             left: BlaSpacings.m, right: BlaSpacings.m, top: BlaSpacings.s),
         child: Column(
           children: [
-            // Top search Search bar
             RidePrefBar(
                 ridePref: _currentRidePref,
                 onRidePrefPressed: onRidePrefPressed,
@@ -117,7 +110,6 @@ class _RidesScreenState extends State<RidesScreen> {
                       itemBuilder: (ctx, index) => RideTile(
                         ride: rides[index],
                         onPressed: () {
-                          // Handle ride selection
                           print("Selected ride: ${rides[index]}");
                         },
                       ),

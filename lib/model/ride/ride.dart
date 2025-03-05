@@ -25,6 +25,9 @@ class Ride {
   final int availableSeats;
   final double pricePerSeat;
 
+  // Added acceptPets property
+  final bool acceptPets;
+
   RideStatus status = RideStatus.created;
 
   final List<User> passengers = [];
@@ -37,6 +40,8 @@ class Ride {
     required this.driver,
     required this.availableSeats,
     required this.pricePerSeat,
+    // Added optional parameter with default value
+    this.acceptPets = false,
   });
 
   void addPassenger(User passenger) {
@@ -49,6 +54,7 @@ class Ride {
   String toString() {
     return 'Ride from $departureLocation at ${DateTimeUtils.formatDateTime(departureDate)} '
         'to $arrivalLocation arriving at ${DateTimeUtils.formatDateTime(arrivalDateTime)}, '
-        'Driver: $driver, Seats: $availableSeats, Price: \$${pricePerSeat.toStringAsFixed(2)}';
+        'Driver: $driver, Seats: $availableSeats, Price: \$${pricePerSeat.toStringAsFixed(2)}, '
+        'Pets Allowed: $acceptPets';
   }
 }
