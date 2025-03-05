@@ -1,7 +1,7 @@
 import 'package:week_3_blabla_project/model/ride_pref/ride_pref.dart';
 import 'package:week_3_blabla_project/repository/ride_repository.dart';
 
-
+import '../dummy_data/dummy_data.dart';
 import '../model/ride/ride.dart';
 
 enum RideSortType {
@@ -32,13 +32,12 @@ class RidesService {
     _repository = repository;
   }
   
-  List<Ride> getRides(RidePref preference,  {RideSortType? sortType}) {
+List<Ride> getRides(RidePref preference, RidesFilter? filter, {RideSortType? sortType}) {
     if (_repository == null) {
       throw Exception('RidesService not initialized with repository');
     }
-    
-    List<Ride> rides = _repository!.getRides(preference,);
-    
+
+    List<Ride> rides = _repository!.getRides(preference, filter);
   
     if (sortType != null) {
       switch (sortType) {
