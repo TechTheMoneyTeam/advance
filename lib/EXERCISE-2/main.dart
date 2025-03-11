@@ -5,6 +5,7 @@ import 'screens/home.dart';
 
 void main() {
   runApp(
+    
     ChangeNotifierProvider(
       create: (context) => ColorCounters(),
       child: MaterialApp(

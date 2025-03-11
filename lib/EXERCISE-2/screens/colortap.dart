@@ -6,6 +6,7 @@ import '../widgets/colortapwiget.dart';
 class ColorTapsScreen extends StatelessWidget {
   const ColorTapsScreen({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     print("StatisticsScreen rebuilt"); 

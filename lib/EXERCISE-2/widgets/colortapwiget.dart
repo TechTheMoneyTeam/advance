@@ -6,6 +6,7 @@ class ColorTapWidget extends StatelessWidget {
   final VoidCallback onTap;
 
   const ColorTapWidget({
+    
     Key? key,
     required this.colorType,
     required this.tapCount,

@@ -8,6 +8,7 @@ class ColorCounters extends ChangeNotifier {
     redTapCount++;
     notifyListeners();
   }
+  
 
   void incrementBlueTapCount() {
     blueTapCount++;
