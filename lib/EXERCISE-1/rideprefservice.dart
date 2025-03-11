@@ -33,6 +33,7 @@ class ConsoleLogger implements RidePreferencesListener {
   }
 }
 
+
 void main() {
   RidePreferencesService riderservice = RidePreferencesService();
   riderservice.addListener(ConsoleLogger());
