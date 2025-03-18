@@ -18,7 +18,7 @@ class PostScreen extends StatelessWidget {
         actions: [
           IconButton(
             // 2- Fetch the post
-            onPressed: () => {postProvider.fetchPost(45)},
+            onPressed: () => {postProvider.fetchPost(25)},
             icon: const Icon(Icons.update),
           ),
         ],

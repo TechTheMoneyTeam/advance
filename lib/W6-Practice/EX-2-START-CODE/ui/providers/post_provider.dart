@@ -7,7 +7,6 @@ import 'async_value.dart';
 
 class PostProvider extends ChangeNotifier {
   final PostRepository _repository;
-
   AsyncValue<Post>? postValue;
 
   PostProvider({required PostRepository repository}) : _repository = repository;
@@ -31,6 +30,9 @@ class PostProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+// online
+
 class PostProvider1 extends ChangeNotifier {
   final PostRepository1 _repository;
 
